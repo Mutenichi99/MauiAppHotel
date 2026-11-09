@@ -1,0 +1,11 @@
+# Arquivos temporários do Visual Studio / MAUI
+.vs/
+**/bin/
+**/obj/
+**/TestResults/
+*.user
+*.suo
+*.csproj.user
+# Dados particulares e caches
+*.log
+.DS_Store

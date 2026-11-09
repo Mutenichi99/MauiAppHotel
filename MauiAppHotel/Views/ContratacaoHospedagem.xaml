@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.Views.ContratacaoHospedagem"
+             Title="Hotel Prime"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource Paper}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,18,20,30" Spacing="16">
+
+            <!-- Cabeçalho e acesso à tela solicitada pelo professor -->
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                <VerticalStackLayout Grid.Column="0" Spacing="2">
+                    <Label Text="HOTEL PRIME"
+                           FontSize="25" FontAttributes="Bold"
+                           TextColor="{StaticResource Navy}" />
+                    <Label Text="SIMULADOR DE HOSPEDAGEM"
+                           FontSize="10" CharacterSpacing="1.7"
+                           TextColor="{StaticResource Muted}" />
+                </VerticalStackLayout>
+                <Button Grid.Column="1" Text="SOBRE  ↗"
+                        BackgroundColor="{StaticResource Navy}"
+                        TextColor="White" FontSize="12"
+                        FontAttributes="Bold" CornerRadius="12"
+                        Padding="16,10" VerticalOptions="Center"
+                        Clicked="AoAbrirSobre" />
+            </Grid>
+
+            <!-- Imagem local: a aplicação funciona sem internet -->
+            <Border StrokeThickness="0" StrokeShape="RoundRectangle 20">
+                <Image Source="hotel_banner.png"
+                       HeightRequest="165" Aspect="AspectFill"
+                       SemanticProperties.Description="Ilustração de uma acomodação confortável de hotel" />
+            </Border>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Planeje sua estadia"
+                       FontSize="22" FontAttributes="Bold"
+                       TextColor="{StaticResource Ink}" />
+                <Label Text="Escolha os hóspedes, a suíte e as datas para visualizar o valor da hospedagem."
+                       FontSize="13" TextColor="{StaticResource Muted}" />
+            </VerticalStackLayout>
+
+            <!-- Stepper e BindingContext: conteúdo central da Agenda 13 -->
+            <Border BackgroundColor="White" Stroke="{StaticResource Outline}"
+                    StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="17">
+                <VerticalStackLayout Spacing="13">
+                    <Label Text="01  •  HÓSPEDES"
+                           FontSize="12" FontAttributes="Bold"
+                           CharacterSpacing="1" TextColor="{StaticResource Navy}" />
+                    <Grid ColumnDefinitions="*,32,116" RowDefinitions="Auto,Auto"
+                          RowSpacing="10" ColumnSpacing="7">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Adultos"
+                               TextColor="{StaticResource Ink}" VerticalOptions="Center" />
+                        <Label Grid.Row="0" Grid.Column="1"
+                               BindingContext="{x:Reference stp_adultos}"
+                               Text="{Binding Value, StringFormat='{0:F0}'}"
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Center" FontAttributes="Bold"
+                               TextColor="{StaticResource Navy}" />
+                        <Stepper Grid.Row="0" Grid.Column="2" x:Name="stp_adultos"
+                                 Minimum="1" Maximum="8" Increment="1" Value="2"
+                                 HorizontalOptions="End" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="Crianças"
+                               TextColor="{StaticResource Ink}" VerticalOptions="Center" />
+                        <Label Grid.Row="1" Grid.Column="1"
+                               BindingContext="{x:Reference stp_criancas}"
+                               Text="{Binding Value, StringFormat='{0:F0}'}"
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Center" FontAttributes="Bold"
+                               TextColor="{StaticResource Navy}" />
+                        <Stepper Grid.Row="1" Grid.Column="2" x:Name="stp_criancas"
+                                 Minimum="0" Maximum="8" Increment="1" Value="0"
+                                 HorizontalOptions="End" />
+                    </Grid>
+                    <Label Text="Cada suíte possui uma capacidade máxima de hóspedes."
+                           FontSize="11" TextColor="{StaticResource Muted}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Picker preenchido com objetos Suite no C# -->
+            <Border BackgroundColor="White" Stroke="{StaticResource Outline}"
+                    StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="17">
+                <VerticalStackLayout Spacing="11">
+                    <Label Text="02  •  ACOMODAÇÃO"
+                           FontSize="12" FontAttributes="Bold"
+                           CharacterSpacing="1" TextColor="{StaticResource Navy}" />
+                    <Picker x:Name="pck_quarto"
+                            Title="Selecione sua suíte"
+                            TitleColor="{StaticResource Muted}"
+                            TextColor="{StaticResource Ink}"
+                            BackgroundColor="{StaticResource Paper}"
+                            FontSize="15" />
+                    <Label x:Name="lbl_descricao_suite"
+                           FontSize="12" TextColor="{StaticResource Muted}" />
+                    <Label x:Name="lbl_preco_diaria"
+                           FontSize="17" FontAttributes="Bold"
+                           TextColor="{StaticResource Navy}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- DatePicker, datas inicializadas e validadas no C# -->
+            <Border BackgroundColor="White" Stroke="{StaticResource Outline}"
+                    StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="17">
+                <VerticalStackLayout Spacing="13">
+                    <Label Text="03  •  PERÍODO DA ESTADIA"
+                           FontSize="12" FontAttributes="Bold"
+                           CharacterSpacing="1" TextColor="{StaticResource Navy}" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="7">
+                            <Label Text="Check-in" FontSize="12"
+                                   TextColor="{StaticResource Muted}" />
+                            <DatePicker x:Name="dtpck_checkin" Format="dd/MM/yyyy"
+                                        TextColor="{StaticResource Ink}"
+                                        BackgroundColor="{StaticResource Paper}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="7">
+                            <Label Text="Check-out" FontSize="12"
+                                   TextColor="{StaticResource Muted}" />
+                            <DatePicker x:Name="dtpck_checkout" Format="dd/MM/yyyy"
+                                        TextColor="{StaticResource Ink}"
+                                        BackgroundColor="{StaticResource Paper}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                    <Label Text="O check-out precisa ser depois do check-in."
+                           FontSize="11" TextColor="{StaticResource Muted}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Prévia recalculada ao mudar o formulário -->
+            <Border BackgroundColor="{StaticResource Navy}"
+                    StrokeThickness="0" StrokeShape="RoundRectangle 18" Padding="18">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                    <VerticalStackLayout Grid.Column="0" Spacing="5">
+                        <Label Text="TOTAL ESTIMADO" FontSize="11"
+                               CharacterSpacing="1" TextColor="#C7D8E6" />
+                        <Label x:Name="lbl_noites" Text="1 noite"
+                               TextColor="White" FontSize="13" />
+                    </VerticalStackLayout>
+                    <Label Grid.Column="1" x:Name="lbl_valor_previa"
+                           Text="R$ 0,00" FontSize="23" FontAttributes="Bold"
+                           TextColor="{StaticResource Gold}" VerticalOptions="Center" />
+                </Grid>
+            </Border>
+
+            <Label x:Name="lbl_aviso" TextColor="#B42318"
+                   FontSize="12" IsVisible="False" />
+
+            <Button Text="AVANÇAR PARA O RESUMO  →"
+                    FontAttributes="Bold" FontSize="14"
+                    BackgroundColor="{StaticResource Gold}"
+                    TextColor="{StaticResource NavyDeep}"
+                    CornerRadius="14" HeightRequest="54"
+                    Clicked="AoAvancar" />
+
+            <Label Text="Projeto acadêmico • Valores ilustrativos • Nenhuma reserva real é efetuada"
+                   FontSize="10" HorizontalTextAlignment="Center"
+                   TextColor="{StaticResource Muted}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

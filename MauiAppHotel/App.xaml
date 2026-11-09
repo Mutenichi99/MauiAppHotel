@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Navy">#11283F</Color>
+            <Color x:Key="NavyDeep">#0B1C2E</Color>
+            <Color x:Key="Gold">#D8A65E</Color>
+            <Color x:Key="Paper">#F4F7FA</Color>
+            <Color x:Key="Ink">#172B41</Color>
+            <Color x:Key="Muted">#61758A</Color>
+            <Color x:Key="Outline">#DEE6ED</Color>
+            <Color x:Key="SoftGold">#FFF5E5</Color>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

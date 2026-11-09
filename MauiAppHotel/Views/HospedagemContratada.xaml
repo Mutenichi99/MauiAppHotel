@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:MauiAppHotel.Models"
+             x:Class="MauiAppHotel.Views.HospedagemContratada"
+             x:DataType="models:Reserva"
+             Title="Resumo da hospedagem"
+             BackgroundColor="{StaticResource Paper}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,25,20,35" Spacing="18">
+            <Border BackgroundColor="{StaticResource Navy}" StrokeThickness="0"
+                    StrokeShape="RoundRectangle 20" Padding="24">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="SIMULAÇÃO CONCLUÍDA" TextColor="{StaticResource Gold}"
+                           FontSize="12" FontAttributes="Bold" CharacterSpacing="1" />
+                    <Label Text="Seu resumo de estadia"
+                           TextColor="White" FontAttributes="Bold" FontSize="26" />
+                    <Label Text="Confira as informações e o valor estimado da sua hospedagem."
+                           TextColor="#D2E0EB" FontSize="13" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="White" Stroke="{StaticResource Outline}"
+                    StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="20">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="DETALHES DA RESERVA" FontSize="12" FontAttributes="Bold"
+                           TextColor="{StaticResource Navy}" CharacterSpacing="1" />
+                    <Label Text="Suíte" FontSize="12" TextColor="{StaticResource Muted}" />
+                    <Label Text="{Binding NomeSuite}" FontSize="20" FontAttributes="Bold"
+                           TextColor="{StaticResource Ink}" />
+                    <Label Text="{Binding DescricaoSuite}" FontSize="12"
+                           TextColor="{StaticResource Muted}" />
+                    <BoxView HeightRequest="1" BackgroundColor="{StaticResource Outline}" />
+
+                    <Label Text="Hóspedes" FontSize="12" TextColor="{StaticResource Muted}" />
+                    <Label Text="{Binding HospedesFormatado}" FontSize="16"
+                           TextColor="{StaticResource Ink}" />
+
+                    <Label Text="Período" FontSize="12" TextColor="{StaticResource Muted}" />
+                    <Label Text="{Binding PeriodoFormatado}" FontSize="16"
+                           TextColor="{StaticResource Ink}" />
+                    <Label Text="{Binding NoitesFormatado}" FontSize="12"
+                           TextColor="{StaticResource Muted}" />
+
+                    <Label Text="Valor por diária" FontSize="12" TextColor="{StaticResource Muted}" />
+                    <Label Text="{Binding DiariaFormatada}" FontSize="16"
+                           TextColor="{StaticResource Ink}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="{StaticResource SoftGold}" StrokeThickness="0"
+                    StrokeShape="RoundRectangle 18" Padding="20">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="TOTAL ESTIMADO" FontSize="12" FontAttributes="Bold"
+                           TextColor="{StaticResource Navy}" />
+                    <Label Text="{Binding TotalFormatado}" FontSize="32"
+                           FontAttributes="Bold" TextColor="{StaticResource Navy}" />
+                    <Label Text="Cálculo: número de noites × valor da suíte."
+                           FontSize="11" TextColor="{StaticResource Muted}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="FAZER OUTRA SIMULAÇÃO" Clicked="AoRecomecar"
+                    BackgroundColor="{StaticResource Gold}"
+                    TextColor="{StaticResource NavyDeep}"
+                    FontAttributes="Bold" CornerRadius="14" HeightRequest="52" />
+            <Label Text="Esta é uma simulação acadêmica. Nenhuma reserva foi realizada."
+                   FontSize="11" HorizontalTextAlignment="Center"
+                   TextColor="{StaticResource Muted}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

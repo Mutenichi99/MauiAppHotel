@@ -1,0 +1,16 @@
+HOTEL PRIME - AGENDA 13 - ENTREGA
+================================
+
+1) Extraia o ZIP e abra MauiAppHotel.sln no Visual Studio 2026.
+2) Debug / Any CPU / Windows Machine -> Ctrl+F5.
+3) Na tela principal clique no botão SOBRE ↗.
+4) Faça prints REAIS do aplicativo em execução (Win+Shift+S).
+5) Salve em Entrega/Capturas_Tela_Sobre/01_Tela_Sobre.png.
+6) Compacte essa pasta de capturas para enviar ao professor.
+7) Publique este projeto em seu GitHub e envie o link do repositório.
+
+O ZIP entregue contém o código, mas não pode incluir prints reais de uma
+execução que ainda não ocorreu no seu computador, nem o link de um
+repositório GitHub que você ainda não publicou.
+
+Autor: Leonardo Nunes de Souza | Ano: 2026
